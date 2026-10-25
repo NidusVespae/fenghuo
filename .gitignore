@@ -1,0 +1,16 @@
+# 烽火 runtime artifacts — never commit these
+registry.md
+state.json
+fenghuo_state.json
+notes/
+fenghuo_notes/
+*.tmp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS cruft
+.DS_Store
