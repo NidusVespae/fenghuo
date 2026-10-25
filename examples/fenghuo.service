@@ -1,0 +1,23 @@
+# Example systemd service for 烽火 (headless run).
+# Copy to /etc/systemd/system/fenghuo.service and edit User= and the paths.
+
+[Unit]
+Description=Fenghuo (KEV beacon) — scheduled CISA KEV pull
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=youruser
+Environment=PYTHONUTF8=1
+Environment=FENGHUO_REGISTRY=%h/fenghuo/registry.md
+Environment=FENGHUO_NOTES_DIR=%h/fenghuo/notes
+Environment=FENGHUO_STATE=%h/fenghuo/state.json
+Environment=FENGHUO_CADENCE=weekly
+ExecStart=/usr/bin/python3 /opt/fenghuo/fenghuo.py --auto
+
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/fenghuo
+PrivateTmp=true
+NoNewPrivileges=true
