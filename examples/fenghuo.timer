@@ -1,0 +1,13 @@
+# Example systemd timer for 烽火 — weekly, Sunday morning.
+# Copy to /etc/systemd/system/fenghuo.timer, then enable --now.
+
+[Unit]
+Description=Weekly Fenghuo KEV pull
+
+[Timer]
+OnCalendar=Sun *-*-* 07:17:00
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target
